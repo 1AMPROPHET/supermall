@@ -1,8 +1,7 @@
 <template>
   <div id="main-tab-bar">
-    <router-view></router-view>
     <tab-bar>
-      <tab-bar-item v-for="item in list" :path="item.path">
+      <tab-bar-item v-for="(item, key) in list" :key="key" :path="item.path">
         <img slot="item-icon" :src="item.icon" alt="">
         <img slot="item-icon-active" :src="item.icon_active" alt="">
         <div slot="item-text">{{item.text}}</div>
@@ -16,8 +15,8 @@ import TabBar from "@/components/common/tabbar/TabBar";
 import TabBarItem from "@/components/common/tabbar/TabBarItem";
 import home from "@/assets/img/tabbar/home.png"
 import redhome from "@/assets/img/tabbar/redhome.png";
-import explore from "@/assets/img/tabbar/explore.png";
-import redexplore from "@/assets/img/tabbar/redexplore.png";
+import category from "@/assets/img/tabbar/category.png";
+import redcategory from "@/assets/img/tabbar/redcategory.png";
 import market from "@/assets/img/tabbar/market.png";
 import redmarket from "@/assets/img/tabbar/redmarket.png";
 import profile from "@/assets/img/tabbar/profile.png";
@@ -36,15 +35,15 @@ export default {
           text: '首页'
         },
         {
-          icon: explore,
-          icon_active: redexplore,
-          path: '/explore',
+          icon: category,
+          icon_active: redcategory,
+          path: '/category',
           text: '分类'
         },
         {
           icon: market,
           icon_active: redmarket,
-          path: '/market',
+          path: '/cart',
           text: '购物车'
         },
         {

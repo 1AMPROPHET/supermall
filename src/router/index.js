@@ -1,9 +1,12 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+
+// 路由懒加载
 const Home = () => import('../views/home/home')
-const Explore = () => import('../views/explore/explore')
-const Market = () => import('../views/market/market')
+const Category = () => import('../views/category/category')
+const cart = () => import('../views/cart/cart')
 const Profile = () => import('../views/profile/profile')
+const Detail = () => import('../views/detail/Detail')
 
 Vue.use(VueRouter)
 
@@ -17,16 +20,20 @@ const routes = [
     component: Home
   },
   {
-    path: '/explore',
-    component: Explore
+    path: '/category',
+    component: Category
   },
   {
-    path: '/market',
-    component: Market
+    path: '/cart',
+    component: cart
   },
   {
     path: '/profile',
     component: Profile
+  },
+  {
+    path: '/detail/:iid',
+    component: Detail
   }
 ]
 

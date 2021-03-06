@@ -1,8 +1,8 @@
 <template>
   <swiper>
-    <SwiperItem v-for="item in list">
+    <SwiperItem v-for="(item, key) in list" :key="key">
       <a :href="item.link">
-        <img :src="item.image">
+        <img :src="item.image" alt="" @load="imageLoad">
       </a>
     </SwiperItem>
   </swiper>
@@ -21,9 +21,24 @@ export default {
       }
     }
   },
+  data() {
+    return {
+      isLoad: false
+    }
+  },
   components: {
     SwiperItem,
     Swiper
+  },
+  methods: {
+    // 图片加载后返回事件，并且使用bool变量控制返回次数为1次
+    imageLoad() {
+      if (!this.isLoad)
+      {
+        this.$emit('imageLoad')
+        this.isLoad = true
+      }
+    }
   }
 }
 </script>

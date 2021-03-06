@@ -26,6 +26,7 @@ export default {
   },
   methods: {
     itemclick() {
+      // catch(err=> {})可使重复点击不报错
       this.$router.replace(this.path).catch(err => {})
     }
   }
